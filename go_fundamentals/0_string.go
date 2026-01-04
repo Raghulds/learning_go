@@ -1,5 +1,12 @@
 package gofundamentals
 
+/*
+Strings are Read only slice of bytes without cap
+Zero value for a string is "", not nil
+
+byte -> uint8
+rune -> uint32
+*/
 import (
 	"fmt"
 	"strings"
@@ -26,6 +33,13 @@ func Banner(text string, width int) {
 	fmt.Print(strings.Repeat(" ", padding))
 	fmt.Println(text)
 	fmt.Println(strings.Repeat("-", width))
+
+	// bytes
+	fmt.Println([]byte(text))
+	fmt.Println(text[3])
+	fmt.Println(text[4])
+
+	fmt.Println(utf8.FullRune([]byte(text)))
 }
 
 /*

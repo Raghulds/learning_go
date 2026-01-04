@@ -77,6 +77,9 @@ func Game() {
 	fmt.Println("i: %#v\n", it)
 	fmt.Println("i: %#v\n", p1)
 
+	fmt.Println("Empty interface")
+	emptyInterface()
+
 }
 
 func moveAll(ms []Mover, dx, dy int) {
@@ -170,4 +173,33 @@ func (p *Player) Found(key Key) error {
 	}
 
 	return nil
+}
+
+func emptyInterface() {
+	var a any
+
+	a = 7
+	fmt.Println("1. a ", a)
+
+	a = "seven"
+	fmt.Println("2. a ", a)
+
+	/*
+		Don't use any.
+		Exceptions:
+		- Serialization
+		- Printing
+	*/
+
+	// type assertion
+	s := a.(string)
+	fmt.Println("s ", s)
+
+	// comma ok expressions
+	i, ok := a.(int32)
+	if !ok {
+		fmt.Printf("Not an integer (%T)!\n", a)
+	} else {
+		fmt.Println("i ", i)
+	}
 }
