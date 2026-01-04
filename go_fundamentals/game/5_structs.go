@@ -202,4 +202,13 @@ func emptyInterface() {
 	} else {
 		fmt.Println("i ", i)
 	}
+
+	switch a.(type) {
+	case string:
+		fmt.Println("string")
+	case int:
+		fmt.Println("int")
+	default:
+		fmt.Printf("Other type - %T \n", a)
+	}
 }
