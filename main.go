@@ -1,6 +1,8 @@
 package main
 
-import "github.com/gofundamentals/go_fundamentals/game"
+import (
+	gofundamentals "github.com/gofundamentals/go_fundamentals"
+)
 
 func main() {
 	// 0
@@ -36,6 +38,15 @@ func main() {
 	// fmt.Println("unsorted array became sorted", unsorted, "it shouldn't have - Median for the array -> ", gofundamentals.GetMedian(unsorted))
 
 	// 5
-	game.Game()
+	// game.Game()
+
+	// 6
+	// gofundamentals.Generics()
+
+	// 7
+	// gofundamentals.Panic()
+
+	// 8
+	gofundamentals.Map()
 
 }

@@ -136,7 +136,24 @@ type Mover interface {
 
 /*
 In many languages -> Pointers can always be passed down. Never up
-In Go, it's allowed. Go compiiler does ESCAPE ANALYSIS
+
+For ex., c example
+int* make_number() {
+    int x = 42;
+    return &x;
+}
+int main() {
+	int* p = make_number();
+	printf("%d\n", *p);
+}
+Compilation suceeds; But behavior is invalid
+x will be a stack variable
+	------
+In Go, it's allowed. Go compiler does ESCAPE ANALYSIS - x escapes to heap
+Pointer will be added in heap
+* Memory outlives the function
+* Pointer remains valid
+Garbage Collector cleans it up later
 */
 
 /*
