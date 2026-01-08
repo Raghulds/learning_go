@@ -47,6 +47,9 @@ func main() {
 	// gofundamentals.Panic()
 
 	// 8
-	gofundamentals.Map()
+	// gofundamentals.Map()
+
+	// 9
+	gofundamentals.Concurrency()
 
 }

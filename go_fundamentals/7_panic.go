@@ -19,8 +19,8 @@ func division(a, b int) (n int, err error) {
 }
 
 /*
-panic -
-Manual panic trigger by using panic() function
+panic - stops normal execution of the current goroutine & starts a panic sequence
+Manual panic trigger can be done by using panic() function
 recover in defer funcfor catching panics
 
 named return values -
