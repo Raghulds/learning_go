@@ -80,7 +80,36 @@ func fanoutCalls_Wait() {
 
 }
 
-func fanoutCalls_Pool() {}
+const PoolSize = 2
+
+func fanoutCalls_Pool() {
+	start := time.Now()
+	var wg sync.WaitGroup
+	ch := make(chan string)
+
+	wg.Add(PoolSize)
+	// Producers
+	go func() {
+		for _, v := range urls {
+			ch <- v
+		}
+		close(ch)
+	}()
+
+	// Consumers
+	for range PoolSize {
+		go func() {
+			defer wg.Done()
+			for url := range ch {
+				URLlog(url)
+			}
+		}()
+	}
+	wg.Wait()
+
+	duration := time.Since(start)
+	fmt.Printf("%d urls in %v \n", len(urls), duration)
+}
 
 func sequentialCalls() {
 
