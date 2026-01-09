@@ -80,10 +80,11 @@ func deadlockDueToNoSendClose() {
 		  fmt.Println("Received: ", v)
 		}
 	*/
-	fmt.Println("Sending to a closed channel")
-	ch <- 12
-	fmt.Println("Ending..")
 
+	// fmt.Println("Sending to a closed channel will panic")
+	// ch <- 12
+
+	fmt.Println("Ending..")
 }
 
 /*

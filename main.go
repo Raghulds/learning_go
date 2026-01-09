@@ -50,6 +50,8 @@ func main() {
 	// gofundamentals.Map()
 
 	// 9
-	gofundamentals.Concurrency()
+	// gofundamentals.Concurrency()
 
+	// 10
+	gofundamentals.FanoutDemo()
 }
