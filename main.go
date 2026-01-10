@@ -57,5 +57,8 @@ func main() {
 
 	// 11
 	// gofundamentals.TaxiCheck()
-	gofundamentals.TaxiCheckConcurrent()
+	// gofundamentals.TaxiCheckConcurrent()
+
+	// 12
+	gofundamentals.DataRace()
 }
