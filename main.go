@@ -53,5 +53,9 @@ func main() {
 	// gofundamentals.Concurrency()
 
 	// 10
-	gofundamentals.FanoutDemo()
+	// gofundamentals.FanoutDemo()
+
+	// 11
+	// gofundamentals.TaxiCheck()
+	gofundamentals.TaxiCheckConcurrent()
 }
