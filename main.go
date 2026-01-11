@@ -60,5 +60,11 @@ func main() {
 	// gofundamentals.TaxiCheckConcurrent()
 
 	// 12
-	gofundamentals.DataRace()
+	// gofundamentals.DataRace()
+
+	// 13
+	// gofundamentals.MultipleChannels()
+
+	// 14
+	gofundamentals.RealtimeBidding()
 }
