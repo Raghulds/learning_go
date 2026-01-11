@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/Raghulds/stemmer"
+	"github.com/stretchr/testify/require"
 )
 
 var (
@@ -14,6 +15,7 @@ var (
 
 // Tokenize returns tokens (lower case) found in text.
 func CustomTokenize(text string) []string {
+	_ = require.New
 	words := wordRe.FindAllString(text, -1)
 	var tokens []string
 	for _, w := range words {
