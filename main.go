@@ -1,8 +1,6 @@
 package main
 
-import (
-	gofundamentals "github.com/gofundamentals/go_fundamentals"
-)
+import gofundamentals "github.com/gofundamentals/0_go_fundamentals"
 
 func main() {
 	// 0

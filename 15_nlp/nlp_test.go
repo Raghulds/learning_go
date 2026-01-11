@@ -4,32 +4,57 @@ import (
 	"os"
 	"slices"
 	"testing"
+
+	"github.com/BurntSushi/toml"
+	"github.com/stretchr/testify/require"
 )
 
 func TestCustomTokenize(t *testing.T) {
 	text := "Who's on first?"
 	tokens := CustomTokenize(text)
 	expected := []string{"who", "on", "first"}
-	if !slices.Equal(expected, tokens) {
-		t.Fatalf("expected %#v, got %#v", expected, tokens)
+	require.Equal(t, expected, tokens)
+	// if !slices.Equal(expected, tokens) {
+	// 	t.Fatalf("expected %#v, got %#v", expected, tokens)
+	// }
+}
+
+type tokCase struct {
+	Text   string
+	Tokens []string
+	Name   string
+}
+
+func loadTokenizeCases(t *testing.T) []tokCase {
+	file, err := os.Open("testdata/tokenize_cases.toml")
+	require.NoError(t, err)
+	defer file.Close()
+
+	var data struct {
+		Cases []tokCase `toml:"case"`
 	}
+	dec := toml.NewDecoder(file)
+	_, err = dec.Decode(&data)
+	require.NoError(t, err)
+	return data.Cases
 }
 
 func TestCustomTokenizeTable(t *testing.T) {
-	var cases = []struct {
-		text   string
-		tokens []string
-	}{
-		{"Who's on first", []string{"who", "on", "first"}},
-		{"Who's on Sec", []string{"who", "on", "sec"}},
-		{"", nil},
-	}
+	// var cases = []struct {
+	// 	text   string
+	// 	tokens []string
+	// }{
+	// 	{"Who's on first", []string{"who", "on", "first"}},
+	// 	{"Who's on Sec", []string{"who", "on", "sec"}},
+	// 	{"", nil},
+	// }
+	cases := loadTokenizeCases(t)
 
 	for _, tc := range cases {
-		t.Run(tc.text, func(t *testing.T) {
-			tokens := CustomTokenize(tc.text)
-			if !slices.Equal(tc.tokens, tokens) {
-				t.Fatalf("expected %#v, got %#v", tc.tokens, tokens)
+		t.Run(tc.Text, func(t *testing.T) {
+			tokens := CustomTokenize(tc.Text)
+			if !slices.Equal(tc.Tokens, tokens) {
+				t.Fatalf("expected %#v, got %#v", tc.Tokens, tokens)
 			}
 		})
 	}

@@ -14,6 +14,7 @@ replace github.com/Raghulds/stemmer => ../15_stemmer
 require github.com/stretchr/testify v1.11.1
 
 require (
+	github.com/BurntSushi/toml v1.6.0
 	github.com/Raghulds/stemmer v0.0.0-00010101000000-000000000000 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
